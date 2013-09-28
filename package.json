@@ -1,0 +1,25 @@
+{
+  "name": "bawsaq",
+  "version": "0.0.0",
+  "description": "Fetch information about the BAWSAQ exchange",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/deoxxa/bawsaq.git"
+  },
+  "keywords": [
+    "bawsaq",
+    "gta"
+  ],
+  "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/deoxxa/bawsaq/issues"
+  },
+  "dependencies": {
+    "request": "~2.27.0"
+  }
+}
