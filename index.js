@@ -19,7 +19,7 @@ exports.getDetails = function getDetails(cb) {
       return cb(Error("response wasn't an object"));
     }
 
-    if (!data.Stocks) {
+    if (!data.Stocks || !Array.isArray(Stocks)) {
       return cb(Error("couldn't find stock info"));
     }
 
