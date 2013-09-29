@@ -23,6 +23,33 @@ exports.getDetails = function getDetails(cb) {
       return cb(Error("couldn't find stock info"));
     }
 
-    return cb(null, data.Stocks);
+    var stocks = data.Stocks.map(function(stock) {
+      return {
+        company: {
+          code: stock.CompanyCode,
+          name: stock.CompanyName,
+          summary: stock.Summary,
+        },
+        price: {
+          index: stock.Index,
+          current: parseFloat(stock.CurrentPrice.replace("$", "")),
+          high: parseFloat(stock.HighPrice.replace("$", "")),
+          low: parseFloat(stock.LowPrice.replace("$", "")),
+          movement: {
+            amount: parseFloat(stock.PriceMovement.replace("$", "")),
+            percent: stock.PriceMovementPercent,
+            direction: stock.PriceMovementDirection,
+            total: {
+              amount: stock.TotalPriceMovement,
+              percent: stock.TotalPriceMovement,
+            },
+          },
+          history: stock.PriceHistory.split(",").map(parseFloat),
+        },
+        modifiers: stock.Modifiers,
+      };
+    });
+
+    return cb(null, stocks, data);
   });
 };
