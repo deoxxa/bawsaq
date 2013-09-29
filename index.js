@@ -48,7 +48,13 @@ exports.getDetails = function getDetails(cb) {
         },
         modifiers: stock.Modifiers,
       };
-    });
+    }).sort(function(a, b) {
+      return a.company.code > b.company.code ? 1 : -1;
+    }).reduce(function(i, v) {
+      i[v.company.code] = v;
+
+      return i;
+    }, {});
 
     return cb(null, stocks, data);
   });
